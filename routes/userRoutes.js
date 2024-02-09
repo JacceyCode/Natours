@@ -8,6 +8,7 @@ const {
   deleteUser,
   updateMe,
   deleteMe,
+  getMe,
 } = require('../controllers/userController');
 
 const {
@@ -17,6 +18,7 @@ const {
   resetPassword,
   protect,
   updatePassword,
+  restrictTo,
 } = require('../controllers/authController');
 
 const router = express.Router();
@@ -27,13 +29,18 @@ router.post('/login', login);
 router.post('/forgotPassword', forgotPassword);
 router.patch('/resetPassword/:token', resetPassword);
 
-router.patch('/updateMyPassword', protect, updatePassword);
+// To protect all other routes below, we call the protect middleware on the router itself rather than individually on each route
+router.use(protect);
 
-router.patch('/updateMe', protect, updateMe);
-router.delete('/deleteMe', protect, deleteMe);
+router.patch('/updateMyPassword', updatePassword);
+router.get('/me', getMe, getUser);
+router.patch('/updateMe', updateMe);
+router.delete('/deleteMe', deleteMe);
+
+// To protect the below route from been access by anyone except the admin, we use the restrictTo middleware on the router from here
+router.use(restrictTo('admin'));
 
 router.route('/').get(getAllUsers).post(createUser);
-
 router.route('/:id').get(getUser).patch(updateUser).delete(deleteUser);
 
 module.exports = router;
