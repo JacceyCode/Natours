@@ -1,21 +1,31 @@
 doctype html
 html(lang="en")
     head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet", href="css/style.css")
-        link(rel="shortcut icon", href="img/favicon.png", type="image/png")
-        link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato:300,300i,700")
-        title Natours | Exciting tours for adventurous people
+        block head
+            meta(charset="UTF-8")
+            meta(name="viewport", content="width=device-width, initial-scale=1.0")
+            link(rel="stylesheet", href="/css/style.css")
+            link(rel="shortcut icon", href="/img/favicon.png", type="image/png")
+            link(rel="stylesheet", href="https://fonts.googleapis.com/css?family=Lato:300,300i,700")
+            title Natours | #{title}
 
     body
         // HEADER
         include _header
 
         // CONTENT
-        main.main
-            h1= tour
+        block content 
+            h1 This is a placeholder heading
 
 
         // FOOTER
-        include _footer       
+        include _footer    
+
+        //- To pass the access token from server to client from the env file. This is my work around as against directly exposing the Key.
+
+        script.
+            const mapKey = '#{mapKey}'
+
+        //- My work around stops above this line
+           
+        script(src="/js/bundle.js") 
