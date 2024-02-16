@@ -9,6 +9,8 @@ const {
   updateMe,
   deleteMe,
   getMe,
+  uploadUserPhoto,
+  resizeUserPhoto,
 } = require('../controllers/userController');
 
 const {
@@ -36,7 +38,7 @@ router.use(protect);
 
 router.patch('/updateMyPassword', updatePassword);
 router.get('/me', getMe, getUser);
-router.patch('/updateMe', updateMe);
+router.patch('/updateMe', uploadUserPhoto, resizeUserPhoto, updateMe);
 router.delete('/deleteMe', deleteMe);
 
 // To protect the below route from been access by anyone except the admin, we use the restrictTo middleware on the router from here
