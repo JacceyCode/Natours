@@ -12045,7 +12045,7 @@ var login = exports.login = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login',
             data: {
               email: email,
               password: password
@@ -12085,7 +12085,7 @@ var logout = exports.logout = /*#__PURE__*/function () {
           _context2.next = 3;
           return (0, _axios.default)({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
           });
         case 3:
           res = _context2.sent;
@@ -12127,7 +12127,7 @@ var updateSetting = exports.updateSetting = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          url = type === 'password' ? 'http://127.0.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.0.1:3000/api/v1/users/updateMe';
+          url = type === 'password' ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
@@ -12178,7 +12178,7 @@ var bookTour = exports.bookTour = /*#__PURE__*/function () {
           stripe = Stripe('pk_test_51OCN8SFrqnEhzr3vm5joLKAOYU6sNV98XaAcxe9YdwzxcxA5wNWR10cvHSgektP0NJo2xvTYaT7thul8ZmzBD0Uj00JLMxNbJ7');
           _context.prev = 1;
           _context.next = 4;
-          return _axios.default.get("http://127.0.0.1:3000/api/v1/bookings/checkout-session/".concat(tourId));
+          return _axios.default.get("/api/v1/bookings/checkout-session/".concat(tourId));
         case 4:
           session = _context.sent;
           _context.next = 7;
