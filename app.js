@@ -39,7 +39,7 @@ app.options('*', cors());
 // To display static files(HTML)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Set scurity HTTP headers
+// Set security HTTP headers
 // Note: for other projects, ignore the configuration in the helmet function, this is to escape content security policy (csp) error for this project
 app.use(
   helmet({
